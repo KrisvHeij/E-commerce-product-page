@@ -1,5 +1,5 @@
 @layer colors {
-  :html {
+  html {
     --c-white: hsl(0 100% 100%);
     --c-black: hsl(0 0% 0%);
     --c-grey-950: hsl(220 13% 13%);
@@ -27,4 +27,15 @@
     --sp-1300: 6.5rem; /* 104px */
     --sp-1600: 8rem; /* 128px */
   }
+}
+
+/* 
+  Font weights
+  regular: 400
+  bold: 700
+
+*/
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
 }
