@@ -1,0 +1,22 @@
+@layer colors {
+  :root {
+    
+  }
+}
+
+@layer spacing {
+  html {
+    --sp-100: 0.5rem;
+    --sp-200: 1rem;
+    --sp-300: 1.5rem;
+    --sp-400: 2rem;
+    --sp-500: 2.5rem;
+    --sp-600: 3rem;
+    --sp-700: 3.5rem;
+    --sp-900: 4.5rem;
+    --sp-1000: 5rem;
+    --sp-1200: 6rem;
+    --sp-1300: 6.5rem;
+    --sp-1600: 8rem;
+  }
+}
