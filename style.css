@@ -36,6 +36,46 @@
 
 */
 
+/* Reset & base styles */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  display: block;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Main styles */
 body {
   font-family: "Kumbh Sans", sans-serif;
+}
+
+.header-outer {
+  padding-block: var(--sp-300);
+  padding-inline: var(--sp-300);
+}
+
+.header-left {
+  display: flex;
+}
+
+.primary-nav {
+  position: fixed;
+  
 }
