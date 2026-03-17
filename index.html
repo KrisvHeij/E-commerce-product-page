@@ -22,7 +22,7 @@
     <title>Frontend Mentor | E-commerce product page</title>
   </head>
   <body>
-    <div class="dark-bg"></div>
+    <div class="dark-bg visually-hidden" aria-hidden="true"></div>
     <div class="container">
       <header class="header-outer">
         <div class="header-left">
@@ -38,11 +38,10 @@
             <img src="./images/icon-menu.svg" alt="" />
           </button>
           <a href="#"
-            ><img class="logo" src="./images/logo.svg" alt="Sneakers logo"
+            ><img class="logo" src="./images/logo.svg" alt="Sneakers"
           /></a>
           <nav>
             <ul
-              hidden
               id="primary-nav"
               class="primary-nav"
               aria-labelledby="nav-button"
@@ -56,7 +55,9 @@
           </nav>
         </div>
         <div class="header-right">
-          <button><img src="./images/icon-cart.svg" alt="" /></button>
+          <button class="cart-icon">
+            <img src="./images/icon-cart.svg" alt="" />
+          </button>
           <a href="#" class="profile"
             ><img src="./images/image-avatar.png" alt=""
           /></a>
