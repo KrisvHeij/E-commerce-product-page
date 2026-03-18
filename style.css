@@ -148,6 +148,62 @@ body {
   line-height: 1.625rem;
 }
 
+/* Article */
+
+/* Image gallery */
+.image-gallery {
+  position: relative;
+  display: flex;
+}
+
+.image-gallery-inner {
+  display: flex;
+  overflow: hidden;
+  height: 300px;
+}
+
+.image-gallery-inner img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-button {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--c-white);
+  display: grid;
+  place-items: center;
+}
+
+.image-button img {
+  width: 0.6rem;
+}
+
+.previous-button,
+.next-button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.previous-button {
+  left: 1rem;
+}
+
+.previous-button img {
+  transform: translateX(-15%);
+}
+
+.next-button {
+  right: 1rem;
+}
+
+.next-button img {
+  transform: translateX(15%);
+}
+
 /* Visually hidden classes */
 .visually-hidden {
   display: none;

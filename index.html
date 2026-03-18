@@ -40,12 +40,8 @@
           <a href="#"
             ><img class="logo" src="./images/logo.svg" alt="Sneakers"
           /></a>
-          <nav>
-            <ul
-              id="primary-nav"
-              class="primary-nav"
-              aria-labelledby="nav-button"
-            >
+          <nav aria-labelledby="nav-button">
+            <ul id="primary-nav" class="primary-nav">
               <li><a href="#" class="nav-link">Collections</a></li>
               <li><a href="#" class="nav-link">Men</a></li>
               <li><a href="#" class="nav-link">Women</a></li>
@@ -55,14 +51,45 @@
           </nav>
         </div>
         <div class="header-right">
-          <button class="cart-icon">
+          <button
+            class="cart-icon"
+            aria-label="Open cart"
+            aria-expanded="false"
+          >
             <img src="./images/icon-cart.svg" alt="" />
           </button>
           <a href="#" class="profile"
-            ><img src="./images/image-avatar.png" alt=""
+            ><img src="./images/image-avatar.png" alt="View profile"
           /></a>
         </div>
       </header>
+      <article>
+        <div class="image-container">
+          <div class="image-gallery">
+            <button
+              id="previous-button"
+              class="previous-button image-button"
+              aria-label="Previous product photo"
+            >
+              <img src="./images/icon-previous.svg" alt="" />
+            </button>
+            <div class="image-gallery-inner">
+              <img src="./images/image-product-1.jpg" alt="" />
+              <img src="./images/image-product-2.jpg" alt="" />
+              <img src="./images/image-product-3.jpg" alt="" />
+              <img src="./images/image-product-4.jpg" alt="" />
+            </div>
+            <button
+              id="next-button"
+              class="next-button image-button"
+              aria-label="Next product photo"
+            >
+              <img src="./images/icon-next.svg" alt="" />
+            </button>
+          </div>
+          <div class="image-thumbnails"></div>
+        </div>
+      </article>
     </div>
 
     <!-- Collections
