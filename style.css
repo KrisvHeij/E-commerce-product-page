@@ -151,15 +151,19 @@ body {
 /* Article */
 
 /* Image gallery */
-.image-gallery {
+.image-container {
   position: relative;
+}
+
+.image-gallery {
   display: flex;
+  height: 300px;
+  overflow: hidden;
 }
 
 .image-gallery-inner {
   display: flex;
-  overflow: hidden;
-  height: 300px;
+  transition: transform 250ms ease;
 }
 
 .image-gallery-inner img {
@@ -176,6 +180,7 @@ body {
   background-color: var(--c-white);
   display: grid;
   place-items: center;
+  z-index: 5;
 }
 
 .image-button img {
@@ -190,18 +195,18 @@ body {
 
 .previous-button {
   left: 1rem;
-}
-
-.previous-button img {
-  transform: translateX(-15%);
+  background-image: url("./images/icon-previous.svg");
+  background-repeat: no-repeat;
+  background-position-x: 45%;
+  background-position-y: 50%;
 }
 
 .next-button {
   right: 1rem;
-}
-
-.next-button img {
-  transform: translateX(15%);
+  background-image: url("./images/icon-next.svg");
+  background-repeat: no-repeat;
+  background-position-x: 55%;
+  background-position-y: 50%;
 }
 
 /* Visually hidden classes */

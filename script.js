@@ -1,6 +1,10 @@
 const navBtn = document.getElementById("nav-button");
 const prevBtn = document.getElementById("previous-button");
 const nextBtn = document.getElementById("next-button");
+const btns = [prevBtn, nextBtn];
+const slides = document.querySelectorAll(".image-gallery-inner img");
+
+let currentIndex = 0;
 
 // Open/Close navigation
 if (navBtn) {
@@ -16,22 +20,28 @@ if (navBtn) {
   })
 }
 
-// Image slider/gallery
-const btns = [prevBtn, nextBtn];
-const imageContainer = document.querySelector(".image-gallery-inner");
+// Image slider/gallery for mobile/tablets screen size
+function slideImage(btn) {
+  const imageContainer = document.querySelector(".image-gallery-inner");
+  
+  if (btn.id === "previous-button") {
+    if (currentIndex > 0) {
+      currentIndex--;
+    }
+  }
+    
+  if (btn.id === "next-button") {
+    if (currentIndex < (slides.length - 1)) {
+      currentIndex++;
+    }
+  }  
+
+  imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;  
+}
+
+// Event listeners
 btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    const slide = e.target.closest(".image-button");
-
-    let currentIndex = 0;
-  
-    if (slide.id === "previous-button") {
-      currentIndex--;
-      imageContainer.style.transform = "translateX(-100%)";
-    }
-    if (slide.id === "next-button") {
-      currentIndex++;
-      imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-  })
+    slideImage(e.currentTarget);
+  });
 })
