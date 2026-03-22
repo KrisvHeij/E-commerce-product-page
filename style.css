@@ -67,7 +67,7 @@ body {
   max-width: clamp(23.438rem, calc(9.542rem + 59.288vw), 38rem);
   margin: 0 auto;
 
-  @media (min-width: 66rem) {
+  @media (min-width: 62rem) {
     max-width: 69.375rem;
     padding-inline: var(--sp-300);
   }
@@ -92,7 +92,7 @@ body {
   align-items: center;
   border-bottom: solid 1px var(--c-grey-100);
 
-  @media (min-width: 66rem) {
+  @media (min-width: 62rem) {
     /* padding-block-end: 0; */
   }
 }
@@ -102,7 +102,7 @@ body {
   gap: var(--sp-200);
   align-items:baseline;
 
-  @media (min-width: 66rem) {
+  @media (min-width: 62rem) {
     align-items: center;
   }
 }
@@ -115,7 +115,7 @@ body {
 .nav-button {
   z-index: 100;
 
-  @media (min-width: 66rem) {
+  @media (min-width: 62rem) {
     display: none;
   }
 }
@@ -154,7 +154,7 @@ body {
   @media (min-width: 37.5rem) {
     inset: 0 60% 0 0;
 
-    @media (min-width: 66rem) {
+    @media (min-width: 62rem) {
       position: static;
       margin-inline-start: var(--sp-400);
       padding: 0;
@@ -165,8 +165,6 @@ body {
       color: var(--c-grey-500);
     }
   }
-
-  
 }
 
 .show-primary-nav {
@@ -180,12 +178,12 @@ body {
   line-height: 1.625rem;
   transition: color 250ms ease, border 250ms ease;
 
-  @media (min-width: 66rem) {
+  @media (min-width: 62rem) {
     font-weight: 400;
   }
   
   &:hover {
-    @media (min-width: 66rem) {
+    @media (min-width: 62rem) {
       padding-block-end: 2.125rem;
       color: var(--c-grey-950);
       border-bottom: solid 5px var(--c-orange-500);
@@ -196,11 +194,16 @@ body {
 /* Article */
 
 /* Image gallery */
-.image-container {
+.image-container-slider {
   position: relative;
   margin-block-start: clamp(0rem, calc(-2.863rem + 12.214vw), 3rem);
   margin-block-end: clamp(1.5rem, calc(0.069rem + 6.107vw), 3rem);
   z-index: 2;
+
+  @media (min-width: 62rem) {
+    margin-block-start: 0;
+    margin-block-end: var(--sp-400);
+  }
 }
 
 .image-gallery {
@@ -239,6 +242,9 @@ body {
   place-items: center;
   z-index: 4;
   
+  @media (min-width: 62rem) {
+    display: none;
+  }
 }
 
 .image-button img {
@@ -273,10 +279,35 @@ body {
   margin-inline-start: 0.1875rem;
 }
 
+.image-thumbnails {
+  display: none;
+
+  @media (min-width: 62rem) {
+    display: block;
+  }
+}
+
+.image-thumbnails-inner {
+  display: flex;
+  gap: var(--sp-400);
+  justify-content: space-between;
+}
+
+.image-thumbnails img {
+  max-width: calc(25% - var(--sp-300));
+  border-radius: 0.9375rem;
+  
+}
+
 /* Product info */
 .product-card {
   padding-block-end: var(--sp-900);
+
+  @media (min-width: 62rem) {
+    display: flex;
+  }
 }
+
 .product-info {
   padding-inline: clamp(0rem, calc(2.931rem - 6.107vw), 1.5rem);
 }
@@ -467,3 +498,5 @@ body {
     inset: 0 60% 0 0;
   }
 } */
+
+/* Verder gaan met image thumbnails */
