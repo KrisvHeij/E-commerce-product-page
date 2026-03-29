@@ -1,13 +1,19 @@
 const navBtn = document.getElementById("nav-button");
 const prevImageBtn = document.getElementById("previous-button");
 const nextImageBtn = document.getElementById("next-button");
-const imageBtns = [prevImageBtn, nextImageBtn];
 const slides = document.querySelectorAll(".image-gallery-inner img");
+const minBtn = document.querySelector(".quantity-min");
+const plusBtn = document.querySelector(".quantity-plus");
+const quantitytInput = document.querySelector(".product-quantity input");
 
 let currentIndex = 0;
-let cart = [];
+let cart = {
+  item: null,
+  price: null,
+  quantity: 1
+};
 
-// Open/Close navigation
+// Open & Close navigation
 if (navBtn) {
   const primaryNav = document.getElementById("primary-nav");
   const navIcon = navBtn.querySelector("img");
@@ -41,13 +47,36 @@ function slideImage(btn) {
 }
 
 // Order quantity input
-function updateQuantity() {
+function updateQuantity(target) {
+  if (target.classList.contains("quantity-min")) {
+    if (cart.quantity > 1) {
+      cart.quantity--;
+    }
+  }
 
+  if (target.classList.contains("quantity-plus")) {
+    cart.quantity++;
+  }
+  console.log(cart.quantity);
 }
 
 // Event listeners
-imageBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    slideImage(e.currentTarget);
-  });
-})
+// Image slider
+if (prevImageBtn && nextImageBtn) {
+  [prevImageBtn, nextImageBtn].forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      slideImage(e.currentTarget);
+    });
+  })
+}
+
+// Quantity input
+if (minBtn && plusBtn) {
+  [minBtn, plusBtn].forEach((button) => {
+    button.addEventListener("click", (e) => {
+        updateQuantity(e.currentTarget);
+    })
+  })
+}
+
+
