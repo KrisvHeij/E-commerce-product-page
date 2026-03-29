@@ -1,10 +1,11 @@
 const navBtn = document.getElementById("nav-button");
-const prevBtn = document.getElementById("previous-button");
-const nextBtn = document.getElementById("next-button");
-const btns = [prevBtn, nextBtn];
+const prevImageBtn = document.getElementById("previous-button");
+const nextImageBtn = document.getElementById("next-button");
+const imageBtns = [prevImageBtn, nextImageBtn];
 const slides = document.querySelectorAll(".image-gallery-inner img");
 
 let currentIndex = 0;
+let cart = [];
 
 // Open/Close navigation
 if (navBtn) {
@@ -39,8 +40,13 @@ function slideImage(btn) {
   imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;  
 }
 
+// Order quantity input
+function updateQuantity() {
+
+}
+
 // Event listeners
-btns.forEach((btn) => {
+imageBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     slideImage(e.currentTarget);
   });

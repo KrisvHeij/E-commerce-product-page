@@ -442,12 +442,19 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .quantity-min {
   background-image: url("./images/icon-minus.svg");
 }
 
 .quantity-plus {
   background-image: url("./images/icon-plus.svg");
+}
+
+/* Hover state */
+.quantity-btn:hover,
+.quantity-btn:active {
+  filter: brightness(0) saturate(100%) invert(76%) sepia(36%) saturate(847%) hue-rotate(324deg) brightness(100%) contrast(102%);
 }
 
 .cart-btn {
