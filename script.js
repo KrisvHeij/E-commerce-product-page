@@ -7,11 +7,7 @@ const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
 
 let currentIndex = 0;
-let cart = {
-  item: null,
-  price: null,
-  quantity: 1
-};
+let cart = [];
 
 // Open & Close navigation
 if (navBtn) {
@@ -48,16 +44,18 @@ function slideImage(btn) {
 
 // Order quantity input
 function updateQuantity(target) {
+  let quantity = parseInt(quantitytInput.value);
   if (target.classList.contains("quantity-min")) {
-    if (cart.quantity > 1) {
-      cart.quantity--;
+    if (quantity > 1) {
+      quantity--;
     }
   }
 
   if (target.classList.contains("quantity-plus")) {
-    cart.quantity++;
+    quantity++;
   }
-  console.log(cart.quantity);
+
+  quantitytInput.value = quantity;
 }
 
 // Event listeners
