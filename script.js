@@ -5,6 +5,7 @@ const slides = document.querySelectorAll(".image-gallery-inner img");
 const minBtn = document.querySelector(".quantity-min");
 const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
+const imageThumbnailsContainer = document.querySelector(".image-thumbnails-inner");
 
 let currentIndex = 0;
 let cart = [];
@@ -42,6 +43,15 @@ function slideImage(btn) {
   imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;  
 }
 
+// Show thumbnail in image slide/gallery on desktop screen size
+function showThumbnail(target) {
+  const currentImage = target.dataset.imageNumber;
+
+  if (currentImage) {
+    slides[0].src = `./images/image-product-${currentImage}.jpg`;
+  }
+}
+
 // Order quantity input
 function updateQuantity(target) {
   let quantity = parseInt(quantitytInput.value);
@@ -77,4 +87,8 @@ if (minBtn && plusBtn) {
   })
 }
 
-
+if (imageThumbnailsContainer) {
+  imageThumbnailsContainer.addEventListener("click", (e) => {
+    showThumbnail(e.target);
+  })
+}
