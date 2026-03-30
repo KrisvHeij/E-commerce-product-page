@@ -191,6 +191,26 @@ body {
   }
 }
 
+/* Shopping cart */
+.cart {
+  position: fixed;
+  right: 0;
+  max-width: 22.5rem;
+  margin: var(--sp-100);
+  padding-block: var(--sp-300);
+  padding-inline: var(--sp-100);
+  background-color: var(--c-white);
+  border-radius: 1.5rem;
+  z-index: 5;
+}
+
+.cart h2 {
+  padding-block-end: var(--sp-300);
+  font-size: 1rem;
+  font-weight: 700;
+  border-bottom: solid 1px var(--c-grey-100);
+}
+
 /* Article */
 .image-container {
   @media (min-width: 62rem) {
