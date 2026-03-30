@@ -52,7 +52,7 @@ function showThumbnail(target) {
   }
 }
 
-// Order quantity input
+// Update order quantity input
 function updateQuantity(target) {
   let quantity = parseInt(quantitytInput.value);
   if (target.classList.contains("quantity-min")) {
@@ -87,6 +87,7 @@ if (minBtn && plusBtn) {
   })
 }
 
+// Show thumbnail in image slider
 if (imageThumbnailsContainer) {
   imageThumbnailsContainer.addEventListener("click", (e) => {
     showThumbnail(e.target);
