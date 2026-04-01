@@ -1,4 +1,6 @@
 const navBtn = document.getElementById("nav-button");
+const shoppingCart = document.getElementById("shopping-cart");
+const cartBtn = document.getElementById("cart-btn");
 const prevImageBtn = document.getElementById("previous-button");
 const nextImageBtn = document.getElementById("next-button");
 const slides = document.querySelectorAll(".image-gallery-inner img");
@@ -69,6 +71,13 @@ function updateQuantity(target) {
 }
 
 // Event listeners
+// Show & hide shopping cart content
+if (cartBtn) {
+  cartBtn.addEventListener("click", () => {
+   shoppingCart.toggleAttribute("hidden");
+  })
+}
+
 // Image slider
 if (prevImageBtn && nextImageBtn) {
   [prevImageBtn, nextImageBtn].forEach((btn) => {
