@@ -421,17 +421,27 @@ body {
   justify-content: space-between;
 }
 
-.image-thumbnails img {
+.image-thumbnails button {
+  max-width: calc(25% - var(--sp-300));
+  border-radius: 0.9375rem;
+  outline-color: var(--c-orange-500);
+  overflow: hidden;
+  transition: all 100ms ease;
+}
+
+/* .image-thumbnails-inner img {
   max-width: calc(25% - var(--sp-300));
   border-radius: 0.9375rem;
   outline-color: var(--c-orange-500);
   cursor: pointer;
   transition: all 100ms ease;
-}
+} */
 
 /* Hover state thumbnails */
-.image-thumbnails img:hover {
+.image-thumbnails-inner button:hover {
   outline: solid 2px var(--c-orange-500);
+}
+.image-thumbnails img:hover {
   opacity: 50%;
 }
 
