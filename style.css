@@ -627,38 +627,3 @@ body {
 .visually-hidden {
   display: none;
 }
-
-/* Media queries */
-/* @media (min-width: 25rem) {
-  .product-price-container {
-    display: block;
-  }    
-
-  .product-price-original {
-    margin-block-start: var(--sp-100);
-  }
-}
-
-@media (min-width: 48rem) {
-  .product-buttons {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .product-quantity {
-    grid-column: 1 / 2;
-
-  }
-
-  .cart-btn {
-    grid-column: 2 / 3;
-  
-  }
-}
-
-@media (min-width: 37.5rem) {
-  .primary-nav {
-    inset: 0 60% 0 0;
-  }
-} */
-
-/* Verder gaan met image thumbnails */
