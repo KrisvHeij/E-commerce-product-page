@@ -55,7 +55,7 @@
           <button
             id="cart-btn"
             class="cart-icon"
-            aria-label="Open cart"
+            aria-label="Open shopping cart"
             aria-expanded="false"
           >
             <img src="./images/icon-cart.svg" alt="" />
@@ -96,10 +96,22 @@
             </button>
             <div class="image-gallery">
               <div class="image-gallery-inner">
-                <img src="./images/image-product-1.jpg" alt="" />
-                <img src="./images/image-product-2.jpg" alt="" />
-                <img src="./images/image-product-3.jpg" alt="" />
-                <img src="./images/image-product-4.jpg" alt="" />
+                <img
+                  src="./images/image-product-1.jpg"
+                  alt="A pair of Fall Edition Limited sneakers, side and bottom view"
+                />
+                <img
+                  src="./images/image-product-2.jpg"
+                  alt="A pair of Fall Edition Limited sneakers, rear and top view"
+                />
+                <img
+                  src="./images/image-product-3.jpg"
+                  alt="Side view of a single Fall Edtion Limited sneaker"
+                />
+                <img
+                  src="./images/image-product-4.jpg"
+                  alt="Side view of a single Fall Edition Limited sneaker"
+                />
               </div>
             </div>
             <button
@@ -113,16 +125,28 @@
           <div class="image-thumbnails">
             <div class="image-thumbnails-inner">
               <button data-image="1">
-                <img src="./images/image-product-1-thumbnail.jpg" alt="" />
+                <img
+                  src="./images/image-product-1-thumbnail.jpg"
+                  alt="A pair of Fall Edition Limited sneakers, side and bottom view"
+                />
               </button>
               <button data-image="2">
-                <img src="./images/image-product-2-thumbnail.jpg" alt="" />
+                <img
+                  src="./images/image-product-2-thumbnail.jpg"
+                  alt="A pair of Fall Edition Limited sneakers, rear and top view"
+                />
               </button>
               <button data-image="3">
-                <img src="./images/image-product-3-thumbnail.jpg" alt="" />
+                <img
+                  src="./images/image-product-3-thumbnail.jpg"
+                  alt="Side view of a single Fall Edtion Limited sneaker"
+                />
               </button>
               <button data-image="4">
-                <img src="./images/image-product-4-thumbnail.jpg" alt="" />
+                <img
+                  src="./images/image-product-4-thumbnail.jpg"
+                  alt="Side view of a single Fall Edition Limited sneaker"
+                />
               </button>
             </div>
           </div>
@@ -144,12 +168,18 @@
           </div>
           <div class="product-buttons">
             <div class="product-quantity">
-              <button class="quantity-min quantity-btn"></button>
-              <input type="number" value="1" />
-              <button class="quantity-plus quantity-btn"></button>
+              <button
+                class="quantity-min quantity-btn"
+                aria-label="Substract one order quantity"
+              ></button>
+              <input type="number" value="1" aria-label="Order quantity" />
+              <button
+                class="quantity-plus quantity-btn"
+                aria-label="Add one to order quantity"
+              ></button>
             </div>
 
-            <button class="cart-btn">
+            <button id="add-to-cart-btn" class="cart-btn">
               <img src="./images/icon-cart.svg" alt="" aria-hidden="true" />
               Add to cart
             </button>

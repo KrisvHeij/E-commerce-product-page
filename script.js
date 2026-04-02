@@ -8,7 +8,9 @@ const minBtn = document.querySelector(".quantity-min");
 const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
 const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button");
+const addToCartBtn = document.getElementById("add-to-cart-btn");
 
+let quantity = parseInt(quantitytInput.value);
 let currentIndex = 0;
 let cart = [];
 
@@ -56,7 +58,7 @@ function showThumbnail(target) {
 
 // Update order quantity input
 function updateQuantity(target) {
-  let quantity = parseInt(quantitytInput.value);
+  
   if (target.classList.contains("quantity-min")) {
     if (quantity > 1) {
       quantity--;
@@ -68,6 +70,16 @@ function updateQuantity(target) {
   }
 
   quantitytInput.value = quantity;
+}
+
+// Update Cart
+function updateCart() {
+  const productName = document.querySelector(".product-name").innerText;
+  const productPrice = document.querySelector(".product-price").innerText;
+
+  console.log(productPrice)
+
+  // VERDER GAAN MET UPDATE CART
 }
 
 // Event listeners
@@ -102,5 +114,12 @@ if (thumbnailsBtns) {
       btn.addEventListener("click", (e) => {
       showThumbnail(e.target);
     })
+  })
+}
+
+// Add to cart 
+if (addToCartBtn) {
+  addToCartBtn.addEventListener("click", () => {
+    updateCart();
   })
 }
