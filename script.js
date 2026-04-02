@@ -9,6 +9,8 @@ const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
 const imageThumbnailsContainer = document.querySelector(".image-thumbnails-inner");
 
+const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button");
+
 let currentIndex = 0;
 let cart = [];
 
@@ -47,7 +49,8 @@ function slideImage(btn) {
 
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
-  const currentImage = target.dataset.imageNumber;
+  const currentBtn = target.closest("button");
+  const currentImage = currentBtn.querySelector("img").dataset.imageNumber;
 
   if (currentImage) {
     slides[0].src = `./images/image-product-${currentImage}.jpg`;
