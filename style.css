@@ -580,6 +580,15 @@ body {
   text-align: center;
 }
 
+.product-quantity input::-webkit-outer-spin-button,
+.product-quantity input::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+.product-quantity input {
+  appearance: textfield;
+}
+
 .quantity-btn {
   width: 2.5rem;
   height: 100%;
