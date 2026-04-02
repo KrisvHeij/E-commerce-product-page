@@ -7,8 +7,6 @@ const slides = document.querySelectorAll(".image-gallery-inner img");
 const minBtn = document.querySelector(".quantity-min");
 const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
-const imageThumbnailsContainer = document.querySelector(".image-thumbnails-inner");
-
 const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button");
 
 let currentIndex = 0;
@@ -49,11 +47,10 @@ function slideImage(btn) {
 
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
-  const currentBtn = target.closest("button");
-  const currentImage = currentBtn.querySelector("img").dataset.imageNumber;
+  const currentBtn = target.closest("button").dataset.image;
 
-  if (currentImage) {
-    slides[0].src = `./images/image-product-${currentImage}.jpg`;
+  if (currentBtn) {
+    slides[0].src = `./images/image-product-${currentBtn}.jpg`;
   }
 }
 
@@ -100,8 +97,10 @@ if (minBtn && plusBtn) {
 }
 
 // Show thumbnail in image slider
-if (imageThumbnailsContainer) {
-  imageThumbnailsContainer.addEventListener("click", (e) => {
-    showThumbnail(e.target);
+if (thumbnailsBtns) {
+  thumbnailsBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+      showThumbnail(e.target);
+    })
   })
 }
