@@ -143,6 +143,8 @@ function renderCart() {
   cartContent.append(checkoutBtn);
 
   console.log(cart)
+
+  // Verder gaan met cartItemprijs etc...
 }
 
 // Event listeners
