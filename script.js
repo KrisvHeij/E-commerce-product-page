@@ -9,6 +9,7 @@ const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
 const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button");
 const addToCartBtn = document.getElementById("add-to-cart-btn");
+const cartContent = document.querySelector(".cart-content");
 
 let quantity = parseInt(quantitytInput.value);
 let currentIndex = 0;
@@ -74,12 +75,74 @@ function updateQuantity(target) {
 
 // Update Cart
 function updateCart() {
+  const productImage = document.getElementById("cart-img").src;
   const productName = document.querySelector(".product-name").innerText;
   const productPrice = document.querySelector(".product-price").innerText;
+  const quantity = parseInt(quantitytInput.value);
+  // const formattedPrice = productPrice.replace(/[$.]/g, "");
+  // const totalPrice = 
 
-  console.log(productPrice)
+  const newCartItem = {
+    image: productImage,
+    name: productName,
+    price: productPrice,
+    quantity: quantity,
+    // totalPrice: productPrice * quantity
+  }
 
-  // VERDER GAAN MET UPDATE CART
+  // console.log("$" + (formattedPrice / 100) + ".00")
+
+  cart.push(newCartItem);
+
+  renderCart();
+}
+
+function renderCart() {
+  if (cart) {
+    cartContent.innerHTML = "";
+  } 
+
+  cart.forEach((item) => {
+    // New cart item
+    const cartItem = document.createElement("div");
+    cartItem.className = "cart-item";
+    // Cart item image
+    const itemImage = document.createElement("img");
+    itemImage.src = item.image;
+    // Cart item information
+    const div = document.createElement("div");
+    const itemName = document.createElement("p");
+    itemName.className = "cart-item-name";
+    itemName.innerText = item.name;
+    const itemPrice = document.createElement("p");
+    itemPrice.className = "cart-item-price";
+    itemPrice.textContent = `${item.price} `;
+    const itemQuantity = document.createElement("span");
+    itemQuantity.className = "cart-item-quantity";
+    itemQuantity.textContent = `x ${item.quantity}`;
+    const totalPrice = document.createElement("span");
+    totalPrice.className = "cart-item-price-total";
+    totalPrice.textContent = " $375.00";
+
+    itemPrice.append(itemQuantity, totalPrice);
+    // Delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+
+    div.append(itemName, itemPrice);
+    cartItem.append(itemImage, div, deleteBtn);
+
+    cartContent.append(cartItem);
+  })
+
+  // Checkout button
+  const checkoutBtn = document.createElement("button");
+  checkoutBtn.className = "checkout-btn";
+  checkoutBtn.textContent = "Checkout";
+
+  cartContent.append(checkoutBtn);
+
+  console.log(cart)
 }
 
 // Event listeners
