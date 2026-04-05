@@ -57,6 +57,15 @@ function showThumbnail(target) {
   }
 }
 
+// Show cart quantity icon
+function showCartQuantityIcon() {
+  const cartQuantityIcon = document.querySelector(".cart-quantity-icon");
+  
+  if (cart !== "") {
+    cartQuantityIcon.removeAttribute("hidden");
+  }
+}
+
 // Update order quantity input
 function updateQuantity(target) {
   
@@ -79,18 +88,15 @@ function updateCart() {
   const productName = document.querySelector(".product-name").innerText;
   const productPrice = document.querySelector(".product-price").innerText;
   const quantity = parseInt(quantitytInput.value);
-  // const formattedPrice = productPrice.replace(/[$.]/g, "");
-  // const totalPrice = 
+  const productPriceInt = productPrice.replace(/[$.]/g, "") / 100;
 
   const newCartItem = {
     image: productImage,
     name: productName,
-    price: productPrice,
+    price: productPriceInt,
     quantity: quantity,
-    // totalPrice: productPrice * quantity
+    totalPrice: productPriceInt * quantity
   }
-
-  // console.log("$" + (formattedPrice / 100) + ".00")
 
   cart.push(newCartItem);
 
@@ -98,9 +104,10 @@ function updateCart() {
 }
 
 function renderCart() {
-  if (cart) {
-    cartContent.innerHTML = "";
-  } 
+  cartContent.innerHTML = "";
+  // if (cart) {
+  //   cartContent.innerHTML = "";
+  // } 
 
   cart.forEach((item) => {
     // New cart item
@@ -116,13 +123,13 @@ function renderCart() {
     itemName.innerText = item.name;
     const itemPrice = document.createElement("p");
     itemPrice.className = "cart-item-price";
-    itemPrice.textContent = `${item.price} `;
+    itemPrice.textContent = `$${item.price}.00 `;
     const itemQuantity = document.createElement("span");
     itemQuantity.className = "cart-item-quantity";
     itemQuantity.textContent = `x ${item.quantity}`;
     const totalPrice = document.createElement("span");
     totalPrice.className = "cart-item-price-total";
-    totalPrice.textContent = " $375.00";
+    totalPrice.textContent = ` $${item.totalPrice}.00`;
 
     itemPrice.append(itemQuantity, totalPrice);
     // Delete button
@@ -143,8 +150,7 @@ function renderCart() {
   cartContent.append(checkoutBtn);
 
   console.log(cart)
-
-  // Verder gaan met cartItemprijs etc...
+  
 }
 
 // Event listeners

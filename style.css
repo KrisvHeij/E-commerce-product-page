@@ -143,6 +143,10 @@ body {
   background-color: var(--c-orange-500);
   text-align: center;
   z-index: 2;
+
+  @media (min-width: 48rem) {
+    top: 25%;
+  }
 }
 
 .profile img {
