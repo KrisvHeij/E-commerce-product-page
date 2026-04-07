@@ -60,9 +60,13 @@ function showThumbnail(target) {
 // Show cart quantity icon
 function showCartQuantityIcon() {
   const cartQuantityIcon = document.querySelector(".cart-quantity-icon");
-  
+  let totalItemsInCart = null;
+
+  cart.forEach((item) => totalItemsInCart += item.quantity);
+
   if (cart !== "") {
     cartQuantityIcon.removeAttribute("hidden");
+    cartQuantityIcon.textContent = totalItemsInCart; 
   }
 }
 
@@ -150,6 +154,7 @@ function renderCart() {
   cartContent.append(checkoutBtn);
 
   console.log(cart)
+  showCartQuantityIcon();
   
 }
 
