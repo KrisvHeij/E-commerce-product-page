@@ -102,16 +102,19 @@ function updateCart() {
     totalPrice: productPriceInt * quantity
   }
 
-  cart.push(newCartItem);
+  const existingCartItem = cart.find((item) => item.name === newCartItem.name);
+
+  if (existingCartItem) {
+    existingCartItem.quantity += newCartItem.quantity;
+  } else {
+    cart.push(newCartItem);
+  }
 
   renderCart();
 }
 
 function renderCart() {
   cartContent.innerHTML = "";
-  // if (cart) {
-  //   cartContent.innerHTML = "";
-  // } 
 
   cart.forEach((item) => {
     // New cart item
@@ -155,7 +158,6 @@ function renderCart() {
 
   console.log(cart)
   showCartQuantityIcon();
-  
 }
 
 // Event listeners
