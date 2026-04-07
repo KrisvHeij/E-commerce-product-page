@@ -72,7 +72,6 @@ function showCartQuantityIcon() {
 
 // Update order quantity input
 function updateQuantity(target) {
-  
   if (target.classList.contains("quantity-min")) {
     if (quantity > 1) {
       quantity--;
@@ -84,6 +83,14 @@ function updateQuantity(target) {
   }
 
   quantitytInput.value = quantity;
+}
+
+// Delete cart item
+function deleteCartItem(item) {
+  const cartItem = item.closest("div.cart-item");
+  cartItem.remove();
+  // console.log(item.closest("div.cart-item"));
+
 }
 
 // Update Cart
@@ -102,6 +109,7 @@ function updateCart() {
     totalPrice: productPriceInt * quantity
   }
 
+  // Check for existing item in cart array
   const existingCartItem = cart.find((item) => item.name === newCartItem.name);
 
   if (existingCartItem) {
@@ -200,4 +208,13 @@ if (addToCartBtn) {
   addToCartBtn.addEventListener("click", () => {
     updateCart();
   })
+}
+
+// Delete cart item
+if (shoppingCart) {
+  shoppingCart.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-btn")) {
+    deleteCartItem(e.target);
+  } 
+})
 }
