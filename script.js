@@ -10,6 +10,7 @@ const quantitytInput = document.querySelector(".product-quantity input");
 const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button");
 const addToCartBtn = document.getElementById("add-to-cart-btn");
 const cartContent = document.querySelector(".cart-content");
+const cartQuantityIcon = document.querySelector(".cart-quantity-icon");
 
 let quantity = parseInt(quantitytInput.value);
 let currentIndex = 0;
@@ -57,17 +58,24 @@ function showThumbnail(target) {
   }
 }
 
+// Reset cart
+function resetCart() {
+  cartContent.innerHTML = "";
+  cartQuantityIcon.setAttribute("hidden", "");
+
+}
+
 // Show cart quantity icon
 function showCartQuantityIcon() {
-  const cartQuantityIcon = document.querySelector(".cart-quantity-icon");
-  let totalItemsInCart = null;
+  let totalItemsInCart = 0;
 
   cart.forEach((item) => totalItemsInCart += item.quantity);
 
-  if (cart !== "") {
+  if (cart.length >= 1) {
     cartQuantityIcon.removeAttribute("hidden");
     cartQuantityIcon.textContent = totalItemsInCart; 
   }
+
 }
 
 // Update order quantity input
@@ -88,9 +96,15 @@ function updateQuantity(target) {
 // Delete cart item
 function deleteCartItem(item) {
   const cartItem = item.closest("div.cart-item");
-  cartItem.remove();
-  // console.log(item.closest("div.cart-item"));
+  const cartItemName = cartItem.querySelector(".cart-item-name").textContent;
 
+  const index = cart.indexOf(cartItemName);
+
+  if (index === -1) {
+    cart.splice(index, 1);
+  }
+  
+  renderCart();
 }
 
 // Update Cart
@@ -122,7 +136,7 @@ function updateCart() {
 }
 
 function renderCart() {
-  cartContent.innerHTML = "";
+  resetCart();
 
   cart.forEach((item) => {
     // New cart item
@@ -158,11 +172,18 @@ function renderCart() {
   })
 
   // Checkout button
-  const checkoutBtn = document.createElement("button");
+  if (cart.length >= 1) {
+    const checkoutBtn = document.createElement("button");
   checkoutBtn.className = "checkout-btn";
   checkoutBtn.textContent = "Checkout";
 
   cartContent.append(checkoutBtn);
+  } else {
+    const p = document.createElement("p");
+    p.className = "cart-empty-text";
+    p.textContent = "Your cart is empty.";
+    cartContent.append(p);
+  }
 
   console.log(cart)
   showCartQuantityIcon();
