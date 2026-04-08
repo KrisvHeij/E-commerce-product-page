@@ -11,6 +11,7 @@ const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button
 const addToCartBtn = document.getElementById("add-to-cart-btn");
 const cartContent = document.querySelector(".cart-content");
 const cartQuantityIcon = document.querySelector(".cart-quantity-icon");
+const mainImage = document.getElementById("cart-img");
 
 let quantity = parseInt(quantitytInput.value);
 let currentIndex = 0;
@@ -189,6 +190,11 @@ function renderCart() {
   showCartQuantityIcon();
 }
 
+// Show lightbox
+function showLightbox() {
+  console.log("yes")
+}
+
 // Event listeners
 // Show & hide shopping cart content
 if (cartBtn) {
@@ -238,4 +244,11 @@ if (shoppingCart) {
     deleteCartItem(e.target);
   } 
 })
+}
+
+// Show image lightbox
+if (mainImage) {
+  mainImage.addEventListener("click", () => {
+    showLightbox();
+  })
 }

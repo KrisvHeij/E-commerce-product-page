@@ -326,6 +326,7 @@ body {
   position: relative;
   margin-block-start: clamp(0rem, calc(-2.863rem + 12.214vw), 3rem);
   margin-block-end: clamp(1.5rem, calc(0.069rem + 6.107vw), 3rem);
+  cursor: pointer;
   z-index: 2;
 
   @media (min-width: 62rem) {
