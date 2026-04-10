@@ -22,27 +22,76 @@
     <title>Frontend Mentor | E-commerce product page</title>
   </head>
   <body>
-    <div class="dark-bg visually-hidden" aria-hidden="true"></div>
-    <div id="lightbox" class="">
-      <!-- <div class="image-gallery-inner">
-        <img
-          id="cart-img"
-          src="./images/image-product-1.jpg"
-          alt="A pair of Fall Edition Limited sneakers, side and bottom view"
-        />
-        <img
-          src="./images/image-product-2.jpg"
-          alt="A pair of Fall Edition Limited sneakers, rear and top view"
-        />
-        <img
-          src="./images/image-product-3.jpg"
-          alt="Side view of a single Fall Edtion Limited sneaker"
-        />
-        <img
-          src="./images/image-product-4.jpg"
-          alt="Side view of a single Fall Edition Limited sneaker"
-        />
-      </div> -->
+    <div class="dark-bg" aria-hidden="true"></div>
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-image-container">
+        <button class="lightbox-button" aria-label="Close lightbox"></button>
+        <div class="image-container-slider">
+          <button
+            id="previous-button"
+            class="previous-button image-button"
+            aria-label="Previous product photo"
+          >
+            <img src="./images/icon-previous.svg" alt="" aria-hidden="true" />
+          </button>
+          <div class="image-gallery">
+            <div class="image-gallery-inner">
+              <img
+                id="cart-img"
+                src="./images/image-product-1.jpg"
+                alt="A pair of Fall Edition Limited sneakers, side and bottom view"
+              />
+              <img
+                src="./images/image-product-2.jpg"
+                alt="A pair of Fall Edition Limited sneakers, rear and top view"
+              />
+              <img
+                src="./images/image-product-3.jpg"
+                alt="Side view of a single Fall Edtion Limited sneaker"
+              />
+              <img
+                src="./images/image-product-4.jpg"
+                alt="Side view of a single Fall Edition Limited sneaker"
+              />
+            </div>
+          </div>
+          <button
+            id="next-button"
+            class="next-button image-button"
+            aria-label="Next product photo"
+          >
+            <img src="./images/icon-next.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="image-thumbnails">
+          <div class="image-thumbnails-inner">
+            <button data-image="1">
+              <img
+                src="./images/image-product-1-thumbnail.jpg"
+                alt="A pair of Fall Edition Limited sneakers, side and bottom view"
+              />
+            </button>
+            <button data-image="2">
+              <img
+                src="./images/image-product-2-thumbnail.jpg"
+                alt="A pair of Fall Edition Limited sneakers, rear and top view"
+              />
+            </button>
+            <button data-image="3">
+              <img
+                src="./images/image-product-3-thumbnail.jpg"
+                alt="Side view of a single Fall Edtion Limited sneaker"
+              />
+            </button>
+            <button data-image="4">
+              <img
+                src="./images/image-product-4-thumbnail.jpg"
+                alt="Side view of a single Fall Edition Limited sneaker"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container">
       <header class="header-outer">

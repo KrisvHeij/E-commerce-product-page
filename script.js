@@ -26,28 +26,28 @@ if (navBtn) {
   navBtn.addEventListener("click", () => {
     primaryNav.classList.toggle("show-primary-nav");
     darkBg.classList.toggle("visually-hidden");
-    
-    primaryNav.classList.contains("show-primary-nav") ? navIcon.src =        "./images/icon-close.svg" : navIcon.src = "./images/icon-menu.svg";   
+
+    primaryNav.classList.contains("show-primary-nav") ? navIcon.src = "./images/icon-close.svg" : navIcon.src = "./images/icon-menu.svg";
   })
 }
 
 // Image slider/gallery for mobile/tablets screen size
 function slideImage(btn) {
   const imageContainer = document.querySelector(".image-gallery-inner");
-  
+
   if (btn.id === "previous-button") {
     if (currentIndex > 0) {
       currentIndex--;
     }
   }
-    
+
   if (btn.id === "next-button") {
     if (currentIndex < (slides.length - 1)) {
       currentIndex++;
     }
-  }  
+  }
 
-  imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;  
+  imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
 // Show thumbnail in image slide/gallery on desktop screen size
@@ -74,7 +74,7 @@ function showCartQuantityIcon() {
 
   if (cart.length >= 1) {
     cartQuantityIcon.removeAttribute("hidden");
-    cartQuantityIcon.textContent = totalItemsInCart; 
+    cartQuantityIcon.textContent = totalItemsInCart;
   }
 
 }
@@ -104,7 +104,7 @@ function deleteCartItem(item) {
   if (index === -1) {
     cart.splice(index, 1);
   }
-  
+
   renderCart();
 }
 
@@ -175,10 +175,10 @@ function renderCart() {
   // Checkout button
   if (cart.length >= 1) {
     const checkoutBtn = document.createElement("button");
-  checkoutBtn.className = "checkout-btn";
-  checkoutBtn.textContent = "Checkout";
+    checkoutBtn.className = "checkout-btn";
+    checkoutBtn.textContent = "Checkout";
 
-  cartContent.append(checkoutBtn);
+    cartContent.append(checkoutBtn);
   } else {
     const p = document.createElement("p");
     p.className = "cart-empty-text";
@@ -192,14 +192,14 @@ function renderCart() {
 
 // Show lightbox
 function showLightbox() {
-  console.log("yes")
+
 }
 
 // Event listeners
 // Show & hide shopping cart content
 if (cartBtn) {
   cartBtn.addEventListener("click", () => {
-   shoppingCart.toggleAttribute("hidden");
+    shoppingCart.toggleAttribute("hidden");
   })
 }
 
@@ -216,7 +216,7 @@ if (prevImageBtn && nextImageBtn) {
 if (minBtn && plusBtn) {
   [minBtn, plusBtn].forEach((button) => {
     button.addEventListener("click", (e) => {
-        updateQuantity(e.currentTarget);
+      updateQuantity(e.currentTarget);
     })
   })
 }
@@ -224,7 +224,7 @@ if (minBtn && plusBtn) {
 // Show thumbnail in image slider
 if (thumbnailsBtns) {
   thumbnailsBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", (e) => {
       showThumbnail(e.target);
     })
   })
@@ -240,10 +240,10 @@ if (addToCartBtn) {
 // Delete cart item
 if (shoppingCart) {
   shoppingCart.addEventListener("click", (e) => {
-  if (e.target.classList.contains("delete-btn")) {
-    deleteCartItem(e.target);
-  } 
-})
+    if (e.target.classList.contains("delete-btn")) {
+      deleteCartItem(e.target);
+    }
+  })
 }
 
 // Show image lightbox

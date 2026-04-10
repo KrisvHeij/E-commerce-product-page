@@ -647,6 +647,81 @@ body {
   filter: brightness(10%);
 }
 
+/* Lightbox */
+.lightbox {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.lightbox-button {
+  width: 20px;
+  height: 20px;
+  margin-block-end: var(--sp-300);
+  justify-self: flex-end;
+  background-image: url("./images/icon-close.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(94%) sepia(6%) saturate(0%) hue-rotate(108deg) brightness(106%) contrast(105%);
+  z-index: 20;
+  transition: filter 250ms ease;
+}
+
+/* Hover state */
+.lightbox-button:hover,
+.lightbox-button:active {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(89%) saturate(1128%) hue-rotate(347deg) brightness(103%) contrast(102%);
+}
+
+.lightbox-image-container {
+  width: 34.375rem;
+}
+
+.lightbox .image-container-slider {
+  cursor: default;
+}
+
+.lightbox .image-button {
+  @media (min-width: 62rem) {
+    display: block;
+  }
+}
+
+.lightbox .previous-button {
+  left: -1rem; 
+}
+
+.lightbox .next-button {
+  right: -1rem;
+}
+
+.lightbox .image-thumbnails button {
+  position: relative;
+}
+
+.lightbox .image-thumbnails img:hover {
+  opacity: 100%;
+}
+
+.lightbox .image-thumbnails button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-white);
+  opacity: 0;
+}
+
+.lightbox .image-thumbnails button:hover:after {
+  opacity: 0.5;
+}
+
 /* Visually hidden classes */
 .visually-hidden {
   display: none;
