@@ -651,7 +651,7 @@ body {
 .lightbox {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -699,12 +699,17 @@ body {
   right: -1rem;
 }
 
+.lightbox .image-thumbnails-inner {
+  gap: var(--sp-400);
+  justify-content: center;
+}
+
 .lightbox .image-thumbnails button {
   position: relative;
 }
 
-.lightbox .image-thumbnails img:hover {
-  opacity: 100%;
+.lightbox .image-thumbnails img {
+  max-width: 5.5rem;
 }
 
 .lightbox .image-thumbnails button:after {
@@ -719,7 +724,7 @@ body {
 }
 
 .lightbox .image-thumbnails button:hover:after {
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 /* Visually hidden classes */
