@@ -3,6 +3,8 @@ const shoppingCart = document.getElementById("shopping-cart");
 const cartBtn = document.getElementById("cart-btn");
 const prevImageBtn = document.getElementById("previous-button");
 const nextImageBtn = document.getElementById("next-button");
+const sliderImageBtns = document.querySelectorAll(".image-button");
+const slidesLightbox = document.querySelectorAll(".lightbox-images img");
 const slides = document.querySelectorAll(".image-gallery-inner img");
 const minBtn = document.querySelector(".quantity-min");
 const plusBtn = document.querySelector(".quantity-plus");
@@ -31,24 +33,43 @@ if (navBtn) {
   })
 }
 
-// Image slider/gallery for mobile/tablets screen size
-function slideImage(btn) {
-  const imageContainer = document.querySelector(".image-gallery-inner");
-
-  if (btn.id === "previous-button") {
+function slideImageTwo(btn, slideImages) {
+  const imageContainer = document.querySelectorAll(".image-gallery-inner");
+  
+  if (btn.classList.contains("previous-button")) {
     if (currentIndex > 0) {
       currentIndex--;
     }
   }
 
-  if (btn.id === "next-button") {
-    if (currentIndex < (slides.length - 1)) {
+  if (btn.classList.contains("next-button")) {
+    if (currentIndex < (slideImages.length - 1)) {
       currentIndex++;
     }
   }
-
-  imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+  console.log(slideImages.length)
+  console.log(currentIndex)
+  imageContainer.forEach((container) => container.style.transform = `translateX(-${currentIndex * 100}%)`);
 }
+
+// Image slider/gallery for mobile/tablets screen size
+// function slideImage(btn) {
+//   const imageContainer = document.querySelector(".image-gallery-inner");
+
+//   if (btn.id === "previous-button") {
+//     if (currentIndex > 0) {
+//       currentIndex--;
+//     }
+//   }
+
+//   if (btn.id === "next-button") {
+//     if (currentIndex < (slides.length - 1)) {
+//       currentIndex++;
+//     }
+//   }
+
+//   imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+// }
 
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
@@ -204,11 +225,20 @@ if (cartBtn) {
 }
 
 // Image slider
-if (prevImageBtn && nextImageBtn) {
-  [prevImageBtn, nextImageBtn].forEach((btn) => {
+// if (prevImageBtn && nextImageBtn) {
+//   [prevImageBtn, nextImageBtn].forEach((btn) => {
+//     btn.addEventListener("click", (e) => {
+//       slideImage(e.currentTarget);
+//     });
+//   })
+// }
+
+if (sliderImageBtns) {
+  sliderImageBtns.forEach((btn) => {
+    currentIndex = 0;
     btn.addEventListener("click", (e) => {
-      slideImage(e.currentTarget);
-    });
+      slideImageTwo(e.currentTarget, slidesLightbox);
+    })
   })
 }
 
