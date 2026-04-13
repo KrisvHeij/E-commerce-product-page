@@ -47,8 +47,8 @@ function slideImageTwo(btn, slideImages) {
       currentIndex++;
     }
   }
-  console.log(slideImages.length)
-  console.log(currentIndex)
+  // console.log(slideImages.length)
+  // console.log(currentIndex)
   imageContainer.forEach((container) => container.style.transform = `translateX(-${currentIndex * 100}%)`);
 }
 
