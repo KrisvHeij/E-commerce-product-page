@@ -4,8 +4,8 @@ const cartBtn = document.getElementById("cart-btn");
 const prevImageBtn = document.getElementById("previous-button");
 const nextImageBtn = document.getElementById("next-button");
 const sliderImageBtns = document.querySelectorAll(".image-button");
-const slidesLightbox = document.querySelectorAll(".lightbox-images img");
-const slides = document.querySelectorAll(".image-gallery-inner img");
+// const slidesLightbox = document.querySelectorAll(".lightbox-images img");
+const slides = document.querySelectorAll(".lightbox-images img");
 const minBtn = document.querySelector(".quantity-min");
 const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
@@ -13,7 +13,7 @@ const thumbnailsBtns = document.querySelectorAll(".image-thumbnails-inner button
 const addToCartBtn = document.getElementById("add-to-cart-btn");
 const cartContent = document.querySelector(".cart-content");
 const cartQuantityIcon = document.querySelector(".cart-quantity-icon");
-const mainImage = document.getElementById("cart-img");
+const mainImage = document.getElementById("image-gallery");
 
 let quantity = parseInt(quantitytInput.value);
 let currentIndex = 0;
@@ -33,7 +33,16 @@ if (navBtn) {
   })
 }
 
-function slideImageTwo(btn, slideImages) {
+// Show lightbox
+function showLightbox(img) {
+  const containerElement = img.closest("#image-gallery");
+  
+  if (containerElement) {
+    
+  }
+}
+
+function slideImageTwo(btn) {
   const imageContainer = document.querySelectorAll(".image-gallery-inner");
   
   if (btn.classList.contains("previous-button")) {
@@ -43,7 +52,7 @@ function slideImageTwo(btn, slideImages) {
   }
 
   if (btn.classList.contains("next-button")) {
-    if (currentIndex < (slideImages.length - 1)) {
+    if (currentIndex < (slides.length - 1)) {
       currentIndex++;
     }
   }
@@ -74,6 +83,9 @@ function slideImageTwo(btn, slideImages) {
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
   const currentBtn = target.closest("button").dataset.image;
+  console.log(currentBtn)
+
+  // Slides element aanpassen zodat deze met beide containers werk (Lightbox en gewoon)
 
   if (currentBtn) {
     slides[0].src = `./images/image-product-${currentBtn}.jpg`;
@@ -211,11 +223,6 @@ function renderCart() {
   showCartQuantityIcon();
 }
 
-// Show lightbox
-function showLightbox() {
-
-}
-
 // Event listeners
 // Show & hide shopping cart content
 if (cartBtn) {
@@ -237,7 +244,7 @@ if (sliderImageBtns) {
   sliderImageBtns.forEach((btn) => {
     currentIndex = 0;
     btn.addEventListener("click", (e) => {
-      slideImageTwo(e.currentTarget, slidesLightbox);
+      slideImageTwo(e.currentTarget);
     })
   })
 }
@@ -278,7 +285,7 @@ if (shoppingCart) {
 
 // Show image lightbox
 if (mainImage) {
-  mainImage.addEventListener("click", () => {
-    showLightbox();
+  mainImage.addEventListener("click", (e) => {
+    showLightbox(e.target);
   })
 }
