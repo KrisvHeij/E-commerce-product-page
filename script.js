@@ -4,8 +4,7 @@ const cartBtn = document.getElementById("cart-btn");
 const prevImageBtn = document.getElementById("previous-button");
 const nextImageBtn = document.getElementById("next-button");
 const sliderImageBtns = document.querySelectorAll(".image-button");
-// const slidesLightbox = document.querySelectorAll(".lightbox-images img");
-const slides = document.querySelectorAll(".lightbox-images img");
+const slides = document.querySelectorAll(".slide-image");
 const minBtn = document.querySelector(".quantity-min");
 const plusBtn = document.querySelector(".quantity-plus");
 const quantitytInput = document.querySelector(".product-quantity input");
@@ -42,8 +41,10 @@ function showLightbox(img) {
   }
 }
 
-function slideImageTwo(btn) {
-  const imageContainer = document.querySelectorAll(".image-gallery-inner");
+// Slide image in container
+function slideImage(btn) {
+  const imageContainer = btn.closest(".image-container-slider");
+  const imageGalleryInner = imageContainer.querySelector(".image-gallery-inner");
   
   if (btn.classList.contains("previous-button")) {
     if (currentIndex > 0) {
@@ -56,40 +57,22 @@ function slideImageTwo(btn) {
       currentIndex++;
     }
   }
-  // console.log(slideImages.length)
-  // console.log(currentIndex)
-  imageContainer.forEach((container) => container.style.transform = `translateX(-${currentIndex * 100}%)`);
+  
+  imageGalleryInner.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
-
-// Image slider/gallery for mobile/tablets screen size
-// function slideImage(btn) {
-//   const imageContainer = document.querySelector(".image-gallery-inner");
-
-//   if (btn.id === "previous-button") {
-//     if (currentIndex > 0) {
-//       currentIndex--;
-//     }
-//   }
-
-//   if (btn.id === "next-button") {
-//     if (currentIndex < (slides.length - 1)) {
-//       currentIndex++;
-//     }
-//   }
-
-//   imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-// }
 
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
   const currentBtn = target.closest("button").dataset.image;
-  console.log(currentBtn)
-
-  // Slides element aanpassen zodat deze met beide containers werk (Lightbox en gewoon)
+  const sliderContainerOuter= target.closest(".slider-container-outer");
+  const imageGalleryInner = sliderContainerOuter.querySelector(".image-gallery-inner");
+  // const currentImage = sliderContainerOuter.querySelectorAll(".image-gallery-inner img");
 
   if (currentBtn) {
-    slides[0].src = `./images/image-product-${currentBtn}.jpg`;
+    imageGalleryInner.style.transform = `translateX(-${(currentBtn - 1) * 100}%)`;
+    currentIndex = currentBtn - 1;
   }
+  
 }
 
 // Reset cart
@@ -219,7 +202,6 @@ function renderCart() {
     cartContent.append(p);
   }
 
-  console.log(cart)
   showCartQuantityIcon();
 }
 
@@ -244,7 +226,7 @@ if (sliderImageBtns) {
   sliderImageBtns.forEach((btn) => {
     currentIndex = 0;
     btn.addEventListener("click", (e) => {
-      slideImageTwo(e.currentTarget);
+      slideImage(e.currentTarget);
     })
   })
 }
