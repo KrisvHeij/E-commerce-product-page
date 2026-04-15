@@ -1,3 +1,7 @@
+const container = document.querySelector(".container");
+const darkBg = document.querySelector(".dark-bg");
+const lightBox = document.getElementById("lightbox");
+const lightboxBtn = document.querySelector(".lightbox-button");
 const navBtn = document.getElementById("nav-button");
 const shoppingCart = document.getElementById("shopping-cart");
 const cartBtn = document.getElementById("cart-btn");
@@ -22,7 +26,6 @@ let cart = [];
 if (navBtn) {
   const primaryNav = document.getElementById("primary-nav");
   const navIcon = navBtn.querySelector("img");
-  const darkBg = document.querySelector(".dark-bg");
 
   navBtn.addEventListener("click", () => {
     primaryNav.classList.toggle("show-primary-nav");
@@ -33,12 +36,17 @@ if (navBtn) {
 }
 
 // Show lightbox
-function showLightbox(img) {
-  const containerElement = img.closest("#image-gallery");
-  
-  if (containerElement) {
-    
-  }
+function showLightbox() {
+  darkBg.classList.remove("visually-hidden");
+  lightBox.classList.remove("visually-hidden");
+  container.setAttribute("aria-hidden", "true");
+}
+
+// Close image lightbox
+function closeLightbox() {
+  darkBg.classList.add("visually-hidden");
+  lightBox.classList.add("visually-hidden");
+  container.removeAttribute("aria-hidden", "true");
 }
 
 // Slide image in container
@@ -61,19 +69,32 @@ function slideImage(btn) {
   imageGalleryInner.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-function removeThumbnailStyles() {
+function removeThumbnailStyles(target) {
   thumbnailsBtns.forEach((btn) => {
     btn.style.outlineColor = "transparent";
     const thumbnailImage = btn.querySelector("img");
       if (thumbnailImage.classList.contains("opacity-50")) {
         thumbnailImage.classList.remove("opacity-50");
       }
+      if (btn.classList.contains("opacity")) {
+        btn.classList.remove("opacity");
+      }
   })
+  const currentBtnElement = target.closest("button");
+  const currentBtnImage = currentBtnElement.querySelector("img");
+
+  // if (currentBtnImage.classList.contains("opacity-50")) {
+  //   currentBtnImage.classList.remove("opacity-50")
+  // }
+
+  // if (currentBtnElement.classList.contains("opacity")) {
+  //   currentBtnElement.classList.remove("opacity");
+  // }
 }
 
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
-  removeThumbnailStyles();
+  removeThumbnailStyles(target);
 
   const currentBtn = target.closest("button").dataset.image;
   const currentBtnElement = target.closest("button");
@@ -86,6 +107,9 @@ function showThumbnail(target) {
     currentIndex = currentBtn - 1;
 
     currentBtnElement.style.outline = "solid 2px var(--c-orange-500)";
+    if (sliderContainerOuter.closest(".lightbox")) {
+      currentBtnElement.classList.add("opacity");
+    }
     currentBtnImage.classList.add("opacity-50");
   }
   
@@ -131,9 +155,9 @@ function deleteCartItem(item) {
   const cartItem = item.closest("div.cart-item");
   const cartItemName = cartItem.querySelector(".cart-item-name").textContent;
 
-  const index = cart.indexOf(cartItemName);
+  const index = cart.findIndex((item) => item.name === cartItemName);
 
-  if (index === -1) {
+  if (index !== -1) {
     cart.splice(index, 1);
   }
 
@@ -283,7 +307,11 @@ if (shoppingCart) {
 
 // Show image lightbox
 if (mainImage) {
-  mainImage.addEventListener("click", (e) => {
-    showLightbox(e.target);
+  mainImage.addEventListener("click", () => {
+    showLightbox();
   })
+}
+
+if (lightboxBtn) {
+  lightboxBtn.addEventListener("click", closeLightbox);
 }
