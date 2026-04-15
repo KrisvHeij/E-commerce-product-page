@@ -61,16 +61,32 @@ function slideImage(btn) {
   imageGalleryInner.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
+function removeThumbnailStyles() {
+  thumbnailsBtns.forEach((btn) => {
+    btn.style.outlineColor = "transparent";
+    const thumbnailImage = btn.querySelector("img");
+      if (thumbnailImage.classList.contains("opacity-50")) {
+        thumbnailImage.classList.remove("opacity-50");
+      }
+  })
+}
+
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
+  removeThumbnailStyles();
+
   const currentBtn = target.closest("button").dataset.image;
+  const currentBtnElement = target.closest("button");
+  const currentBtnImage = currentBtnElement.querySelector("img");
   const sliderContainerOuter= target.closest(".slider-container-outer");
   const imageGalleryInner = sliderContainerOuter.querySelector(".image-gallery-inner");
-  // const currentImage = sliderContainerOuter.querySelectorAll(".image-gallery-inner img");
 
   if (currentBtn) {
     imageGalleryInner.style.transform = `translateX(-${(currentBtn - 1) * 100}%)`;
     currentIndex = currentBtn - 1;
+
+    currentBtnElement.style.outline = "solid 2px var(--c-orange-500)";
+    currentBtnImage.classList.add("opacity-50");
   }
   
 }

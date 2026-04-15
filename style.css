@@ -446,6 +446,13 @@ body {
 .image-thumbnails-inner button:hover {
   outline: solid 2px var(--c-orange-500);
 }
+.opacity-50 {
+  opacity: 50%;
+}
+
+.opacity-100 {
+  opacity: 100%;
+}
 .image-thumbnails img:hover {
   opacity: 50%;
 }
