@@ -678,8 +678,13 @@ body {
 
 /* Hover state */
 .lightbox-button:hover,
-.lightbox-button:active {
+.lightbox-button:active,
+.lightbox-button:focus {
   filter: brightness(0) saturate(100%) invert(49%) sepia(89%) saturate(1128%) hue-rotate(347deg) brightness(103%) contrast(102%);
+}
+
+.lightbox-button:focus {
+  outline: solid 2px var(--c-orange-500);
 }
 
 .lightbox-image-container {

@@ -36,17 +36,32 @@ if (navBtn) {
 }
 
 // Show lightbox
-function showLightbox() {
+function showLightbox(e) {
   darkBg.classList.remove("visually-hidden");
   lightBox.classList.remove("visually-hidden");
   container.setAttribute("aria-hidden", "true");
+  lightboxBtn.focus();
+
+  const focusElements = document.querySelectorAll(".lightbox-image-container button");
+  
+  lightBox.addEventListener("keydown", (e) => {
+    if (!e.shiftKey && document.activeElement === focusElements[6]) {
+      e.preventDefault();
+      focusElements[0].focus();
+    }
+    if (e.shiftKey && document.activeElement === focusElements[0]) {
+        e.preventDefault();
+      focusElements[6 ].focus();
+    }
+  })
 }
 
 // Close image lightbox
 function closeLightbox() {
   darkBg.classList.add("visually-hidden");
   lightBox.classList.add("visually-hidden");
-  container.removeAttribute("aria-hidden", "true");
+  container.removeAttribute("aria-hidden");
+  document.querySelector("#image-gallery").focus();
 }
 
 // Slide image in container
@@ -299,8 +314,15 @@ if (shoppingCart) {
 // Show image lightbox
 if (window.innerWidth >= 992) {
   if (mainImage) {
-    mainImage.addEventListener("click", () => {
-      showLightbox();
+    mainImage.addEventListener("click", (e) => {
+      showLightbox(e);
+    })
+
+    mainImage.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        showLightbox(e);
+      }
     })
   }
 }
