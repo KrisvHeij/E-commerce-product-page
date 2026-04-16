@@ -253,15 +253,6 @@ if (cartBtn) {
   })
 }
 
-// Image slider
-// if (prevImageBtn && nextImageBtn) {
-//   [prevImageBtn, nextImageBtn].forEach((btn) => {
-//     btn.addEventListener("click", (e) => {
-//       slideImage(e.currentTarget);
-//     });
-//   })
-// }
-
 if (sliderImageBtns) {
   sliderImageBtns.forEach((btn) => {
     currentIndex = 0;
@@ -306,12 +297,14 @@ if (shoppingCart) {
 }
 
 // Show image lightbox
-if (mainImage) {
-  mainImage.addEventListener("click", () => {
-    showLightbox();
-  })
+if (window.innerWidth >= 992) {
+  if (mainImage) {
+    mainImage.addEventListener("click", () => {
+      showLightbox();
+    })
+  }
 }
-
+  
 if (lightboxBtn) {
   lightboxBtn.addEventListener("click", closeLightbox);
 }
