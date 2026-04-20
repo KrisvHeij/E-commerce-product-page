@@ -27,14 +27,17 @@ if (navBtn) {
 
   navBtn.addEventListener("click", () => {
     primaryNav.classList.toggle("show-primary-nav");
-    darkBg.classList.toggle("visually-hidden");
+
+    if (darkBg) {
+      darkBg.classList.toggle("visually-hidden");
+    }
 
     primaryNav.classList.contains("show-primary-nav") ? navIcon.src = "./images/icon-close.svg" : navIcon.src = "./images/icon-menu.svg";
   })
 }
 
 // Show lightbox
-function showLightbox(e) {
+function showLightbox() {
   darkBg.classList.remove("visually-hidden");
   lightBox.classList.remove("visually-hidden");
   container.setAttribute("aria-hidden", "true");
@@ -302,33 +305,36 @@ if (shoppingCart) {
 // Show image lightbox
 if (window.innerWidth >= 992) {
   if (mainImage) {
-    mainImage.addEventListener("click", (e) => {
-      showLightbox(e);
+    mainImage.addEventListener("click", () => {
+      showLightbox();
     })
 
     mainImage.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        showLightbox(e);
+        showLightbox();
       }
     })
   }
 }
 
-lightBox.addEventListener("keydown", (e) => {
-  const focusElements = document.querySelectorAll(".lightbox-image-container button");
-  
-  if (!lightBox.classList.contains("visually-hidden")) {
-    if (e.key === "Tab" && !e.shiftKey && document.activeElement === focusElements[6]) {
-      e.preventDefault();
-      focusElements[0].focus();
+if (lightBox) {
+  lightBox.addEventListener("keydown", (e) => {
+    const focusElements = document.querySelectorAll(".lightbox-image-container button");
+    
+    if (!lightBox.classList.contains("visually-hidden")) {
+      if (e.key === "Tab" && !e.shiftKey && document.activeElement === focusElements[6]) {
+        e.preventDefault();
+        focusElements[0].focus();
+      }
+      if (e.key === "Tab" && e.shiftKey && document.activeElement === focusElements[0]) {
+        e.preventDefault();
+        focusElements[6].focus();
+      }
     }
-    if (e.key === "Tab" && e.shiftKey && document.activeElement === focusElements[0]) {
-      e.preventDefault();
-      focusElements[6].focus();
-    }
-  }
-})
+  })
+}
+
 
   
 if (lightboxBtn) {
