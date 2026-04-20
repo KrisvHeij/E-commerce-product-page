@@ -580,6 +580,7 @@ body {
 }
 
 .product-quantity input {
+  appearance: textfield;
   width: 100%;
   font-family: inherit;
   font-size: 1rem;
@@ -593,10 +594,6 @@ body {
 .product-quantity input::-webkit-outer-spin-button,
 .product-quantity input::-webkit-inner-spin-button {
   appearance: none;
-}
-
-.product-quantity input {
-  appearance: textfield;
 }
 
 .quantity-btn {
