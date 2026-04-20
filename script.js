@@ -82,9 +82,20 @@ function slideImage(btn) {
   }
   
   imageGalleryInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  hightlightThumbnail();
 }
 
-function removeThumbnailStyles(target) {
+function hightlightThumbnail() {
+  removeThumbnailStyles();
+  const thumbnailImage = thumbnailsBtns[currentIndex].querySelector("img");
+  thumbnailsBtns[currentIndex].style.outline = "solid 2px var(--c-orange-500)";
+  thumbnailsBtns[currentIndex].classList.add("opacity");
+  thumbnailImage.classList.add("opacity-50");
+
+}
+
+function removeThumbnailStyles() {
   thumbnailsBtns.forEach((btn) => {
     btn.style.outlineColor = "transparent";
     const thumbnailImage = btn.querySelector("img");
@@ -95,8 +106,8 @@ function removeThumbnailStyles(target) {
         btn.classList.remove("opacity");
       }
   })
-  const currentBtnElement = target.closest("button");
-  const currentBtnImage = currentBtnElement.querySelector("img");
+  // const currentBtnElement = target.closest("button");
+  // const currentBtnImage = currentBtnElement.querySelector("img");
 
   // if (currentBtnImage.classList.contains("opacity-50")) {
   //   currentBtnImage.classList.remove("opacity-50")
@@ -109,7 +120,7 @@ function removeThumbnailStyles(target) {
 
 // Show thumbnail in image slide/gallery on desktop screen size
 function showThumbnail(target) {
-  removeThumbnailStyles(target);
+  removeThumbnailStyles();
 
   const currentBtn = target.closest("button").dataset.image;
   const currentBtnElement = target.closest("button");
