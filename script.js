@@ -42,18 +42,20 @@ function showLightbox(e) {
   container.setAttribute("aria-hidden", "true");
   lightboxBtn.focus();
 
-  const focusElements = document.querySelectorAll(".lightbox-image-container button");
+  // const focusElements = document.querySelectorAll(".lightbox-image-container button");
   
-  lightBox.addEventListener("keydown", (e) => {
-    if (!e.shiftKey && document.activeElement === focusElements[6]) {
-      e.preventDefault();
-      focusElements[0].focus();
-    }
-    if (e.shiftKey && document.activeElement === focusElements[0]) {
-        e.preventDefault();
-      focusElements[6 ].focus();
-    }
-  })
+  // if (!lightBox.classList.contains("visually-hidden")) {
+  //   lightBox.addEventListener("keydown", (e) => {
+  //   if (e.key === "Tab" && !e.shiftKey && document.activeElement === focusElements[6]) {
+  //     e.preventDefault();
+  //     focusElements[0].focus();
+  //   }
+  //   if (e.shiftKey && document.activeElement === focusElements[0]) {
+  //       e.preventDefault();
+  //     focusElements[6].focus();
+  //   }
+  // })
+  // }
 }
 
 // Close image lightbox
@@ -247,6 +249,7 @@ function renderCart() {
     // Delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
+    deleteBtn.ariaLabel = `Remove ${item.name} from cart`;
 
     div.append(itemName, itemPrice);
     cartItem.append(itemImage, div, deleteBtn);
@@ -276,6 +279,11 @@ function renderCart() {
 if (cartBtn) {
   cartBtn.addEventListener("click", () => {
     shoppingCart.toggleAttribute("hidden");
+    if (cartBtn.ariaExpanded === "false") {
+      cartBtn.ariaExpanded = "true";
+    } else {
+      cartBtn.ariaExpanded = "false";
+    }
   })
 }
 
@@ -337,6 +345,22 @@ if (window.innerWidth >= 992) {
     })
   }
 }
+
+lightBox.addEventListener("keydown", (e) => {
+  const focusElements = document.querySelectorAll(".lightbox-image-container button");
+  
+  if (!lightBox.classList.contains("visually-hidden")) {
+    if (e.key === "Tab" && !e.shiftKey && document.activeElement === focusElements[6]) {
+      e.preventDefault();
+      focusElements[0].focus();
+    }
+    if (e.key === "Tab" && e.shiftKey && document.activeElement === focusElements[0]) {
+      e.preventDefault();
+      focusElements[6].focus();
+    }
+  }
+})
+
   
 if (lightboxBtn) {
   lightboxBtn.addEventListener("click", closeLightbox);
