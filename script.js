@@ -41,21 +41,6 @@ function showLightbox(e) {
   lightBox.classList.remove("visually-hidden");
   container.setAttribute("aria-hidden", "true");
   lightboxBtn.focus();
-
-  // const focusElements = document.querySelectorAll(".lightbox-image-container button");
-  
-  // if (!lightBox.classList.contains("visually-hidden")) {
-  //   lightBox.addEventListener("keydown", (e) => {
-  //   if (e.key === "Tab" && !e.shiftKey && document.activeElement === focusElements[6]) {
-  //     e.preventDefault();
-  //     focusElements[0].focus();
-  //   }
-  //   if (e.shiftKey && document.activeElement === focusElements[0]) {
-  //       e.preventDefault();
-  //     focusElements[6].focus();
-  //   }
-  // })
-  // }
 }
 
 // Close image lightbox
@@ -94,7 +79,6 @@ function hightlightThumbnail() {
   thumbnailsBtns[currentIndex].style.outline = "solid 2px var(--c-orange-500)";
   thumbnailsBtns[currentIndex].classList.add("opacity");
   thumbnailImage.classList.add("opacity-50");
-
 }
 
 function removeThumbnailStyles() {
@@ -108,16 +92,6 @@ function removeThumbnailStyles() {
         btn.classList.remove("opacity");
       }
   })
-  // const currentBtnElement = target.closest("button");
-  // const currentBtnImage = currentBtnElement.querySelector("img");
-
-  // if (currentBtnImage.classList.contains("opacity-50")) {
-  //   currentBtnImage.classList.remove("opacity-50")
-  // }
-
-  // if (currentBtnElement.classList.contains("opacity")) {
-  //   currentBtnElement.classList.remove("opacity");
-  // }
 }
 
 // Show thumbnail in image slide/gallery on desktop screen size
@@ -140,14 +114,12 @@ function showThumbnail(target) {
     }
     currentBtnImage.classList.add("opacity-50");
   }
-  
 }
 
 // Reset cart
 function resetCart() {
   cartContent.innerHTML = "";
   cartQuantityIcon.setAttribute("hidden", "");
-
 }
 
 // Show cart quantity icon
@@ -160,7 +132,6 @@ function showCartQuantityIcon() {
     cartQuantityIcon.removeAttribute("hidden");
     cartQuantityIcon.textContent = totalItemsInCart;
   }
-
 }
 
 // Update order quantity input
